@@ -28,7 +28,6 @@
   --gold-soft: #f6f1e7;
 
   --danger: #ba6d6d;
-  --danger-soft: #fbf4f4;
 
   --shadow-sm: 0 6px 18px rgba(34, 56, 79, 0.04);
   --shadow-md: 0 14px 34px rgba(34, 56, 79, 0.06);
@@ -37,9 +36,7 @@
   --radius-md: 16px;
   --radius-sm: 12px;
 
-  --container: 1180px;
-  --main-col: minmax(0, 1.65fr);
-  --side-col: minmax(280px, 0.9fr);
+  --container: 980px;
 }
 
 *,
@@ -75,6 +72,7 @@ button {
   font: inherit;
 }
 
+/* LOADER */
 #loader {
   position: fixed;
   inset: 0;
@@ -96,7 +94,7 @@ button {
   width: min(92vw, 320px);
   padding: 1.4rem 1.2rem;
   border-radius: 22px;
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.94);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-md);
   text-align: center;
@@ -148,27 +146,23 @@ button {
 .page {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 1rem 1rem 2.2rem;
+  padding: 1rem 1rem 2rem;
 }
 
-/* top row */
+/* TOP BAR — no border */
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: .8rem;
   margin-bottom: 1rem;
-  padding: .95rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: rgba(255,255,255,0.78);
-  box-shadow: var(--shadow-sm);
+  padding: .2rem 0 .35rem;
 }
 
 .topbar-brand {
   min-width: 0;
   font-family: 'Montserrat', sans-serif;
-  font-size: .83rem;
+  font-size: .82rem;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -184,11 +178,11 @@ button {
 .lang-switch {
   display: inline-flex;
   align-items: center;
-  gap: .35rem;
+  gap: .3rem;
   padding: .2rem;
   border-radius: 999px;
-  background: var(--surface-soft);
-  border: 1px solid var(--line);
+  background: rgba(255,255,255,.74);
+  border: 1px solid rgba(230,237,244,.9);
   flex-shrink: 0;
 }
 
@@ -196,12 +190,12 @@ button {
   border: 0;
   background: transparent;
   color: var(--text-soft);
-  padding: .52rem .86rem;
+  padding: .5rem .82rem;
   min-height: 38px;
   border-radius: 999px;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
-  font-size: .71rem;
+  font-size: .7rem;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -213,50 +207,63 @@ button {
   color: #fff;
 }
 
-/* layout */
-.content-grid {
-  display: grid;
-  grid-template-columns: var(--main-col) var(--side-col);
-  gap: 1rem;
-  align-items: start;
+/* TABS */
+.tabs-shell {
+  margin-bottom: 1rem;
 }
 
-.branch {
+.tabs {
+  display: inline-flex;
+  gap: .38rem;
+  padding: .26rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-btn {
+  border: 0;
+  background: transparent;
+  color: var(--text-soft);
+  padding: .7rem 1rem;
+  min-height: 42px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .73rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  transition: .18s ease;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 4px 12px rgba(34,56,79,0.05);
+}
+
+/* PANELS */
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.panel-stack {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.branch-head {
-  padding: .92rem 1rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(251,252,254,0.96));
-  box-shadow: var(--shadow-sm);
-}
-
-.branch-kicker {
-  font-family: 'Montserrat', sans-serif;
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: .35rem;
-}
-
-.branch-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--text);
-}
-
+/* BLOCKS */
 .block-frame {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.94);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
@@ -327,7 +334,7 @@ button {
   line-height: 1.68;
 }
 
-/* table */
+/* TABLE */
 .reward-wrap {
   width: 100%;
 }
@@ -394,7 +401,7 @@ button {
   font-weight: 700;
 }
 
-/* gifts */
+/* GIFTS */
 .gifts-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -405,36 +412,43 @@ button {
   border: 1px solid var(--line);
   border-radius: 14px;
   background: #fff;
-  padding: .68rem .25rem .55rem;
+  padding: .62rem .24rem .48rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .35rem;
-  min-height: 104px;
+  justify-content: flex-start;
+  gap: .28rem;
+  min-height: 98px;
 }
 
 .gift-card img {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
+  margin-bottom: .08rem;
 }
 
 .gift-name {
+  margin: 0;
   text-align: center;
   color: var(--text-faint);
   font-family: 'Montserrat', sans-serif;
-  font-size: .54rem;
+  font-size: .52rem;
   font-weight: 700;
   text-transform: uppercase;
-  line-height: 1.3;
-  word-break: break-word;
+  line-height: 1.18;
+  letter-spacing: .01em;
+  max-width: 100%;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
-/* rules branch */
+/* RULES */
 .rules-block {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.94);
   box-shadow: var(--shadow-sm);
   padding: 1rem;
   display: flex;
@@ -500,12 +514,12 @@ button {
   text-align: center;
 }
 
-/* states */
+/* STATES */
 .state-box {
   padding: 1.2rem 1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.94);
   box-shadow: var(--shadow-sm);
   text-align: center;
 }
@@ -566,38 +580,62 @@ footer em {
   color: var(--accent);
 }
 
-@media (max-width: 980px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 640px) {
   .page {
     padding: .75rem .75rem 1.6rem;
   }
 
   .topbar {
-    padding: .8rem .85rem;
     margin-bottom: .85rem;
+    padding-bottom: .2rem;
   }
 
   .topbar-brand {
-    font-size: .76rem;
+    font-size: .74rem;
     letter-spacing: .08em;
   }
 
-  .lang-btn {
-    padding: .48rem .72rem;
-    font-size: .66rem;
+  .lang-switch {
+    background: transparent;
+    border: 0;
+    padding: 0;
   }
 
-  .branch,
-  .content-grid {
+  .lang-btn {
+    padding: .42rem .62rem;
+    min-height: 34px;
+    font-size: .65rem;
+  }
+
+  .tabs-shell {
+    margin-bottom: .85rem;
+  }
+
+  .tabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .3rem;
+    padding: .24rem;
+    border-radius: 16px;
+  }
+
+  .tab-btn {
+    min-width: 0;
+    width: 100%;
+    padding: .7rem .55rem;
+    min-height: 40px;
+    border-radius: 12px;
+    font-size: .64rem;
+    line-height: 1.2;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .panel-stack {
     gap: .8rem;
   }
 
-  .branch-head,
   .block-header,
   .block-body,
   .rules-block {
@@ -627,17 +665,20 @@ footer em {
   }
 
   .gift-card {
-    min-height: 88px;
-    padding: .52rem .14rem .42rem;
+    min-height: 86px;
+    padding: .48rem .14rem .38rem;
+    gap: .2rem;
   }
 
   .gift-card img {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 
   .gift-name {
-    font-size: .45rem;
+    font-size: .43rem;
+    line-height: 1.08;
+    letter-spacing: 0;
   }
 
   footer p {
@@ -652,23 +693,24 @@ footer em {
   }
 
   .topbar {
-    padding: .72rem .75rem;
+    gap: .55rem;
   }
 
   .topbar-brand {
-    font-size: .72rem;
-    max-width: 42%;
+    font-size: .7rem;
+    max-width: 45%;
     white-space: normal;
-    line-height: 1.35;
-  }
-
-  .lang-switch {
-    gap: .25rem;
+    line-height: 1.3;
   }
 
   .lang-btn {
-    padding: .44rem .62rem;
-    min-height: 34px;
+    padding: .4rem .52rem;
+    min-height: 32px;
+  }
+
+  .tab-btn {
+    font-size: .61rem;
+    padding: .66rem .46rem;
   }
 }
 </style>
@@ -693,23 +735,24 @@ footer em {
     </div>
   </div>
 
-  <div class="content-grid">
-    <main class="branch" aria-label="Sheet Main">
-      <div class="branch-head">
-        <div class="branch-kicker">Data source</div>
-        <div class="branch-title">Sheet Main</div>
-      </div>
-      <div id="page-blocks"></div>
-    </main>
-
-    <aside class="branch" aria-label="Sheet Rules">
-      <div class="branch-head">
-        <div class="branch-kicker">Data source</div>
-        <div class="branch-title" id="rules-branch-title">Sheet Rules</div>
-      </div>
-      <div id="rules-content"></div>
-    </aside>
+  <div class="tabs-shell">
+    <div class="tabs" role="tablist" aria-label="Навигация по разделам">
+      <button class="tab-btn active" id="tab-main" role="tab" aria-selected="true" aria-controls="panel-main" onclick="setTab('main')">
+        Общие условия
+      </button>
+      <button class="tab-btn" id="tab-rules" role="tab" aria-selected="false" aria-controls="panel-rules" onclick="setTab('rules')">
+        Правила мероприятия
+      </button>
+    </div>
   </div>
+
+  <section id="panel-main" class="tab-panel active" role="tabpanel" aria-labelledby="tab-main">
+    <div class="panel-stack" id="page-blocks"></div>
+  </section>
+
+  <section id="panel-rules" class="tab-panel" role="tabpanel" aria-labelledby="tab-rules">
+    <div class="panel-stack" id="rules-content"></div>
+  </section>
 </div>
 
 <footer>
@@ -735,6 +778,7 @@ const ROW_TYPES = {
 };
 
 let currentLang = 'rus';
+let currentTab = 'main';
 let mainData = [];
 let rulesData = [];
 
@@ -826,6 +870,22 @@ async function fetchSheet(url) {
       (cell && cell.v !== null && cell.v !== undefined) ? String(cell.v).trim() : ''
     )
   );
+}
+
+/* TABS */
+function setTab(tab) {
+  currentTab = tab;
+
+  const isMain = tab === 'main';
+
+  document.getElementById('tab-main').classList.toggle('active', isMain);
+  document.getElementById('tab-rules').classList.toggle('active', !isMain);
+
+  document.getElementById('tab-main').setAttribute('aria-selected', String(isMain));
+  document.getElementById('tab-rules').setAttribute('aria-selected', String(!isMain));
+
+  document.getElementById('panel-main').classList.toggle('active', isMain);
+  document.getElementById('panel-rules').classList.toggle('active', !isMain);
 }
 
 /* MAIN */
@@ -940,7 +1000,7 @@ function buildMain() {
     container.innerHTML = `
       <div class="state-box">
         <h3 class="state-title">Нет данных</h3>
-        <p class="state-text">Контент в Sheet Main пока недоступен.</p>
+        <p class="state-text">Контент пока недоступен.</p>
       </div>
     `;
     return;
@@ -986,14 +1046,11 @@ function buildRules() {
   const container = document.getElementById('rules-content');
   const blocks = groupRowsByBlock(rulesData);
 
-  document.getElementById('rules-branch-title').textContent =
-    currentLang === 'rus' ? 'Sheet Rules' : 'Sheet Rules';
-
   if (!Object.keys(blocks).length) {
     container.innerHTML = `
       <div class="state-box">
         <h3 class="state-title">Нет правил</h3>
-        <p class="state-text">Контент в Sheet Rules пока недоступен.</p>
+        <p class="state-text">Контент пока недоступен.</p>
       </div>
     `;
     return;
@@ -1069,7 +1126,7 @@ function showError(message) {
   document.getElementById('rules-content').innerHTML = `
     <div class="state-box">
       <h3 class="state-title">Ошибка загрузки</h3>
-      <p class="state-text">Sheet Rules также недоступен.</p>
+      <p class="state-text">Раздел правил также недоступен.</p>
     </div>
   `;
 }
